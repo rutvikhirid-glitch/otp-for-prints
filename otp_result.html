@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Successful</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Upload Successful!</h1>
+        <p>Give this code to the shopkeeper:</p>
+        <div class="otp-code">{{ otp }}</div>
+        <a href="/">← Back to home</a>
+    </div>
+</body>
+</html>

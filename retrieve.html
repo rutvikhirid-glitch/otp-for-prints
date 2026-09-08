@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopkeeper Access</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🖨️ Shopkeeper Access</h1>
+        <p>Enter the customer's OTP to download the document:</p>
+
+        <form action="/retrieve" method="POST">
+            <input type="text" name="otp" placeholder="Enter OTP" required maxlength="6">
+            <button type="submit">Get Document</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <a href="/">← Back to home</a>
+    </div>
+</body>
+</html>
