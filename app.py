@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, after_this_request
+from flask import Flask, render_template, request, send_file, jsonify
 from werkzeug.utils import secure_filename
 import os, random, string
 
@@ -8,17 +8,21 @@ os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
 otp_store = {}  # otp -> filepath
 
+
 def generate_otp():
     return "".join(random.choices(string.digits, k=6))
+
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
+
 @app.route("/upload", methods=["GET", "POST"])
 def upload():
     if request.method == "POST":
         file = request.files["file"]
+
         if file.filename != "":
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
@@ -31,25 +35,59 @@ def upload():
 
     return render_template("upload.html")
 
+
 @app.route("/retrieve", methods=["GET", "POST"])
 def retrieve():
     error = None
+
     if request.method == "POST":
         otp = request.form.get("otp")
         filepath = otp_store.get(otp)
 
         if filepath and os.path.exists(filepath):
             response = send_file(filepath, as_attachment=True)
+
             del otp_store[otp]
+
             try:
                 os.remove(filepath)
             except OSError:
                 pass
+
             return response
+
         else:
             error = "Invalid or expired OTP. Please try again."
 
     return render_template("retrieve.html", error=error)
+
+
+@app.route("/get-file/<otp>")
+def get_file(otp):
+    filepath = otp_store.get(otp)
+
+    if filepath and os.path.exists(filepath):
+        return send_file(filepath, as_attachment=True)
+
+    return jsonify({"error": "Invalid or expired OTP"}), 404
+
+
+@app.route("/delete-file/<otp>", methods=["POST"])
+def delete_file(otp):
+    filepath = otp_store.get(otp)
+
+    if filepath and os.path.exists(filepath):
+        try:
+            os.remove(filepath)
+        except OSError:
+            pass
+
+        del otp_store[otp]
+
+        return jsonify({"message": "File deleted successfully"})
+
+    return jsonify({"error": "File already deleted"}), 404
+
 
 if __name__ == "__main__":
     app.run(debug=True)
