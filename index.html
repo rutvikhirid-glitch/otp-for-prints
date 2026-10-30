@@ -1,167 +1,62 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Secure Printout System</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            background: white;
-            border-radius: 25px;
-            padding: 50px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-        }
-
-        .icon {
-            font-size: 60px;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            color: #25245e;
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-
-        .cards {
-            display: flex;
-            gap: 25px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            width: 280px;
-            padding: 30px;
-            border-radius: 20px;
-            background: #f5f6ff;
-        }
-
-        .card-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        h2 {
-            color: #25245e;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #666;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        button {
-            border: none;
-            padding: 14px 25px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        .features {
-            margin-top: 40px;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .feature {
-            color: #555;
-            font-size: 15px;
-        }
-
-        footer {
-            margin-top: 35px;
-            color: #888;
-            font-size: 14px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
 
-    <div class="container">
+<main class="container home-container">
 
-        <div class="icon">🔐</div>
+    <header class="topbar">
+        <div class="brand-mark">OTP<span>.</span></div>
+        <div class="secure-label">● SECURE DOCUMENT ACCESS</div>
+    </header>
 
-        <h1>OTP Secure Printout System</h1>
-
+    <section class="hero">
+        <p class="eyebrow">PRIVATE PRINTING. SIMPLIFIED.</p>
+        <h1>Your documents.<br><span>Your privacy.</span></h1>
         <p class="subtitle">
-            Securely print your documents using one-time access.
+            Upload your document, receive a one-time password and print securely
+            without sharing your original file.
         </p>
+    </section>
 
-        <div class="cards">
+    <section class="cards">
 
-            <div class="card">
-                <div class="card-icon">📄</div>
-                <h2>Customer</h2>
-                <p>
-                    Upload your document securely and receive a one-time OTP.
-                </p>
-                <button onclick="window.location.href='/upload'">Upload Document</button>
-            </div>
+        <article class="card customer-card">
+            <div class="card-icon">↗</div>
+            <p class="card-label">01 / CUSTOMER</p>
+            <h2>Upload your document</h2>
+            <p>Choose your document and get a unique six-digit OTP to share with your print shop.</p>
+            <button onclick="window.location.href='/upload'">Upload document →</button>
+        </article>
 
-            <div class="card">
-                <div class="card-icon">🖨️</div>
-                <h2>Shopkeeper</h2>
-                <p>
-                    Enter the customer's OTP to securely access and print the document.
-                </p>
-               <button onclick="window.location.href='/retrieve'">Shopkeeper Access</button>
-            </div>
+        <article class="card shopkeeper-card">
+            <div class="card-icon">▣</div>
+            <p class="card-label">02 / PRINT SHOP</p>
+            <h2>Access with OTP</h2>
+            <p>Enter the customer's OTP to retrieve the document securely.</p>
+            <button onclick="window.location.href='/retrieve'">Shopkeeper access →</button>
+        </article>
 
-        </div>
+    </section>
 
-        <div class="features">
+    <section class="features">
+        <div>✳ One-time access</div>
+        <div>✳ OTP protection</div>
+        <div>✳ Temporary file storage</div>
+    </section>
 
-            <div class="feature">🔑 One-Time Access</div>
-            <div class="feature">🛡️ Privacy Protected</div>
-            <div class="feature">🗑️ Auto File Deletion</div>
+    <footer>
+        <span>OTP SECURE PRINTOUT SYSTEM</span>
+        <span>SECURE · PRIVATE · SIMPLE</span>
+    </footer>
 
-        </div>
-
-        <footer>
-            Secure • Private • Simple
-        </footer>
-
-    </div>
+</main>
 
 </body>
 </html>
