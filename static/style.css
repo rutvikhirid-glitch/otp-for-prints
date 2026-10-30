@@ -1,85 +1,181 @@
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+}
+
+:root {
+    --lavender: #CBB3E8;
+    --chartreuse: #D4FF3F;
+    --tomato: #E34234;
+    --ink: #19151F;
+    --white: #FFFEFC;
+    --muted: #77717E;
 }
 
 body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--lavender);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    padding: 30px 18px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
 }
+
+/* Main content */
 
 .container {
     width: 100%;
-    max-width: 600px;
-    background: white;
-    border-radius: 25px;
-    padding: 50px;
+    max-width: 620px;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    padding: 48px;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    box-shadow: 9px 9px 0 var(--ink);
 }
+
+/* Headings */
 
 h1, h2 {
-    color: #25245e;
-    margin-bottom: 15px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--ink);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 18px;
 }
 
-p {
-    color: #666;
-    margin-bottom: 20px;
-    line-height: 1.5;
+h1 {
+    font-size: clamp(30px, 5vw, 43px);
 }
+
+h2 {
+    font-size: 28px;
+}
+
+/* Paragraphs */
+
+p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+/* Inputs */
 
 input[type="file"],
 input[type="text"] {
+    display: block;
     width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 2px solid #ddd;
-    margin-bottom: 20px;
+    padding: 16px;
+    margin-bottom: 22px;
+    border: 2px solid var(--ink);
+    border-radius: 5px;
+    background: #F8F5FC;
+    color: var(--ink);
+    font-family: inherit;
     font-size: 15px;
+    outline: none;
 }
 
+input:focus {
+    border-color: #7952A5;
+    box-shadow: 0 0 0 3px var(--lavender);
+}
+
+/* Buttons */
+
 button {
-    border: none;
-    padding: 14px 25px;
-    border-radius: 30px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+    display: inline-block;
+    padding: 15px 30px;
+    border: 2px solid var(--ink);
+    border-radius: 5px;
+    background: var(--chartreuse);
+    color: var(--ink);
+    font-family: inherit;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 800;
     cursor: pointer;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: 0.2s ease;
 }
 
 button:hover {
-    transform: scale(1.05);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
 }
+
+button:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+/* OTP */
 
 .otp-code {
-    font-size: 48px;
-    letter-spacing: 8px;
-    color: #667eea;
+    display: inline-block;
+    padding: 15px 22px;
     margin: 20px 0;
-    font-weight: bold;
+    background: var(--tomato);
+    color: white;
+    border: 2px solid var(--ink);
+    border-radius: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(34px, 8vw, 48px);
+    font-weight: 700;
+    letter-spacing: 8px;
 }
 
+/* Error message */
+
 .error {
-    color: #e74c3c;
-    font-weight: bold;
-    margin: 10px 0;
+    color: #B42318;
+    background: #FFF0ED;
+    border: 1px solid var(--tomato);
+    border-radius: 5px;
+    padding: 12px;
+    margin: 15px 0;
+    font-weight: 700;
 }
+
+/* Links */
 
 a {
     display: inline-block;
     margin-top: 20px;
-    color: #667eea;
+    color: #69428F;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
+}
+
+a:hover {
+    color: var(--tomato);
+    text-decoration: underline;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    body {
+        padding: 18px 12px;
+    }
+
+    .container {
+        padding: 30px 20px;
+        box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    button {
+        width: 100%;
+    }
 }
