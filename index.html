@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Secure Printout System</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
 <main class="container home-container">
@@ -18,7 +20,12 @@
 
     <section class="hero">
         <p class="eyebrow">PRIVATE PRINTING. SIMPLIFIED.</p>
-        <h1>Your documents.<br><span>Your privacy.</span></h1>
+
+        <h1>
+            Your documents.<br>
+            <span>Your privacy.</span>
+        </h1>
+
         <p class="subtitle">
             Upload your document, receive a one-time password and print securely
             without sharing your original file.
@@ -29,18 +36,36 @@
 
         <article class="card customer-card">
             <div class="card-icon">↗</div>
+
             <p class="card-label">01 / CUSTOMER</p>
+
             <h2>Upload your document</h2>
-            <p>Choose your document and get a unique six-digit OTP to share with your print shop.</p>
-            <button onclick="window.location.href='/upload'">Upload document →</button>
+
+            <p>
+                Choose your document and get a unique six-digit OTP
+                to share with your print shop.
+            </p>
+
+            <button onclick="window.location.href='/upload'">
+                Upload document →
+            </button>
         </article>
+
 
         <article class="card shopkeeper-card">
             <div class="card-icon">▣</div>
+
             <p class="card-label">02 / PRINT SHOP</p>
+
             <h2>Access with OTP</h2>
-            <p>Enter the customer's OTP to retrieve the document securely.</p>
-            <button onclick="window.location.href='/retrieve'">Shopkeeper access →</button>
+
+            <p>
+                Enter the customer's OTP to retrieve the document securely.
+            </p>
+
+            <button onclick="window.location.href='/retrieve'">
+                Shopkeeper access →
+            </button>
         </article>
 
     </section>
